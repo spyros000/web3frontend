@@ -28,7 +28,7 @@
 
     <script>
 
-        // Connect to the web3 provider
+        // Connect a the web3 provider
         if (typeof web3 !== 'undefined') {
             web3 = new Web3(web3.currentProvider);
         } else {
@@ -39,7 +39,7 @@
         web3.eth.defaultAccount = web3.eth.accounts[0];
 
         // Get the contract address
-        var RemixContract = web3.eth.contract([
+        var RemixContract = new web3.eth.Contract([
 	{
 		"constant": false,
 		"inputs": [
@@ -68,15 +68,15 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]);
+], '0xc046D3Fd4AFE55F2fc60391eEE64f8511A90fB62');
 
         // Get the contract abi
-        var myMessage = RemixContract.at('0xacba6Bcb2F6425cF43e45230D67f6d4024DCb7bC');
+        var myMessage = RemixContract;
 
         console.log(myMessage);
 
         $("#setMessageButton").click(function () {
-            myMessage.setMessage($("#userInput").val());
+            RemixContract.setMessage($("#userInput").val());
             console.log($("#userInput").val())
         });
 
