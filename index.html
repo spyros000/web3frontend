@@ -36,7 +36,8 @@
         }
 
         // Set a default account
-        web3.eth.defaultAccount = web3.eth.accounts[0];
+        //web3.eth.defaultAccount = web3.eth.accounts[0];
+        //console.log(web3.eth.defaultAccount);
 
         // Get the contract address
         var RemixContract = new web3.eth.Contract([
@@ -68,23 +69,31 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-], '0xc046D3Fd4AFE55F2fc60391eEE64f8511A90fB62');
+], '0x442F3e5c5AE1987C8a34Da2234D499B8f1E8c01a');
 
         // Get the contract abi
         var myMessage = RemixContract;
 
         console.log(myMessage);
-
+        /*
         $("#setMessageButton").click(function () {
     	message = $("#userInput").val();
-    	myMessage.methods.setMessage( (error, result) => {message = result;});
+    	myMessage.methods.setMessage( (result) => {
+            console.log(message);
+            message = result;
+        });
+        //myMessageValue.send({from:web3.eth.defaultAccount });
     	console.log($("#userInput").val());
-		});
-
+	});
+        */
+       //set a default ddress
+       RemixContract.options.address = '0xf769337B4b6f2d83d4389B30821e1bac8Bf797dC';
+       //console.log(RemixContract.options.address);
+       $("#setMessageButton").click(function () {
+            RemixContract.methods.setMessage($("#userInput").val()).send({from:'0xf769337B4b6f2d83d4389B30821e1bac8Bf797dC' });
+            console.log($("#userInput").val());
+        });
     </script>
 </body>
 
 </html>
-RemixContract.methods.setMessage($("#userInput").val()).send({from:web3.eth.defaultAccount });
-.send({from:web3.eth.defaultAccount })
-message,
