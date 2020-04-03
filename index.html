@@ -69,7 +69,7 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-], '0x442F3e5c5AE1987C8a34Da2234D499B8f1E8c01a');
+], '0xCd3dAeEBb8bf466936f0e4fb76F904F22Da33373');
 
         // Get the contract abi
         var myMessage = RemixContract;
@@ -87,10 +87,10 @@
 	});
         */
        //set a default ddress
-       RemixContract.options.address = '0xf769337B4b6f2d83d4389B30821e1bac8Bf797dC';
+       web3.eth.defaultAccount = '0xf769337B4b6f2d83d4389B30821e1bac8Bf797dC';
        //console.log(RemixContract.options.address);
        $("#setMessageButton").click(function () {
-            RemixContract.methods.setMessage($("#userInput").val()).send({from:'0xf769337B4b6f2d83d4389B30821e1bac8Bf797dC' });
+            RemixContract.methods.setMessage($("#userInput").val()).send({from:web3.eth.defaultAccount });
             console.log($("#userInput").val());
         });
     </script>
