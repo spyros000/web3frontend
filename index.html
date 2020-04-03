@@ -76,9 +76,10 @@
         console.log(myMessage);
 
         $("#setMessageButton").click(function () {
-            RemixContract.setMessage($("#userInput").val());
-            console.log($("#userInput").val())
-        });
+    	message = $("#userInput").val();
+    	myMessage.setMessage(message, (error, result) => {message = result;});
+    	console.log($("#userInput").val());
+		});
 
     </script>
 </body>
