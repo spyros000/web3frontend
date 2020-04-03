@@ -77,7 +77,7 @@
 
         $("#setMessageButton").click(function () {
     	message = $("#userInput").val();
-    	myMessage.setMessage(message, (error, result) => {message = result;});
+    	myMessage.methods.setMessage( (error, result) => {message = result;});
     	console.log($("#userInput").val());
 		});
 
@@ -85,3 +85,6 @@
 </body>
 
 </html>
+RemixContract.methods.setMessage($("#userInput").val()).send({from:web3.eth.defaultAccount });
+.send({from:web3.eth.defaultAccount })
+message,
